@@ -12,6 +12,6 @@ const links = [
 /* index.get("/", (req, res) => {
   res.render("index", { links: links });
 }); */
-index.get("/", (req, res)=> res.render("index", {message: "Fuck you, World!"}));
+index.get("/", (req, res)=> res.render("index", {message: "LANDING PAGE!"}));
 
 module.exports = index;
