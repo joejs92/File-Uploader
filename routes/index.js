@@ -9,9 +9,8 @@ const links = [
   { href: "login", text: "Login" },
 ];
 
-/* index.get("/", (req, res) => {
-  res.render("index", { links: links });
-}); */
-index.get("/", (req, res)=> res.render("index", { links: links }));
+const title = "LANDING PAGE";
+
+index.get("/", (req, res)=> res.render("index", { links: links, title: title }));
 
 module.exports = index;

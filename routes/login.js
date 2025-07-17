@@ -9,9 +9,8 @@ const links = [
   { href: "signup", text: "Sign-Up" },
 ];
 
-/* index.get("/", (req, res) => {
-  res.render("index", { links: links });
-}); */
-login.get("/", (req, res)=> res.render("login", { links: links }));
+const title = "LOGIN PAGE";
+
+login.get("/", (req, res)=> res.render("login", { links: links, title: title}));
 
 module.exports = login;
