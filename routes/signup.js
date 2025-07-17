@@ -6,12 +6,12 @@ const signup = Router();
 
 const links = [
   { href: "/", text: "Home" },
-  { href: "about", text: "About" },
+  { href: "login", text: "Login" },
 ];
 
 /* index.get("/", (req, res) => {
   res.render("index", { links: links });
 }); */
-signup.get("/", (req, res)=> res.render("signup", {message: "SIGN-UP PAGE!"}));
+signup.get("/", (req, res)=> res.render("signup", { links: links }));
 
 module.exports = signup;

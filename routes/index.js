@@ -5,13 +5,13 @@ const {Router} = require("express");
 const index = Router();
 
 const links = [
-  { href: "/", text: "Home" },
-  { href: "about", text: "About" },
+  { href: "signup", text: "Sign-Up" },
+  { href: "login", text: "Login" },
 ];
 
 /* index.get("/", (req, res) => {
   res.render("index", { links: links });
 }); */
-index.get("/", (req, res)=> res.render("index", {message: "LANDING PAGE!"}));
+index.get("/", (req, res)=> res.render("index", { links: links }));
 
 module.exports = index;
