@@ -5,6 +5,7 @@ const passport = require("passport");
 const index = require("./routes/index");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
+const LocalStrategy = require('passport-local').Strategy;
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));

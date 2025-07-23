@@ -1,4 +1,6 @@
 const {Router} = require("express");
+const passport = require("passport");
+const LocalStrategy = require('passport-local').Strategy;
 /* const controller = require("../controllers/controller") */
 //const {home} = require("../views/index");
 
