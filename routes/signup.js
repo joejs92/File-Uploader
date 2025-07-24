@@ -1,5 +1,5 @@
 const {Router} = require("express");
-/* const controller = require("../controllers/controller") */
+const controller = require("../controllers/controller")
 //const {home} = require("../views/index");
 
 const signup = Router();
@@ -12,5 +12,6 @@ const links = [
 const title = "SIGN-UP PAGE";
 
 signup.get("/", (req, res)=> res.render("signup", {title: title, links: links}));
+signup.post("/", controller.postSignup);
 
 module.exports = signup;

@@ -18,4 +18,9 @@ login.get("/seeUsers",controller.seeUsers);
 login.get("/createUser",controller.createUser);
 login.get("/deleteAll",controller.deleteAll);
 
+login.post("/", passport.authenticate("local",{
+    successRedirect: "/",
+    failureRedirect: "/"
+})); 
+
 module.exports = login;
