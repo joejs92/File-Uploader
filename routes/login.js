@@ -15,5 +15,7 @@ const title = "LOGIN PAGE";
 
 login.get("/", (req, res)=> res.render("login", { links: links, title: title}));
 login.get("/seeUsers",controller.seeUsers);
+login.get("/createUser",controller.createUser);
+login.get("/deleteAll",controller.deleteAll);
 
 module.exports = login;

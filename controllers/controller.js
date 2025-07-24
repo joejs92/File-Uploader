@@ -21,4 +21,7 @@ export async function seeUsers(req, res){
     console.log(users);
 }
 
+export async function deleteAll(req,res){
+    const deleteAll = await prisma.user.deleteMany({});
+};
 //I don't know why, but using 'module.exports' doesn't work.
