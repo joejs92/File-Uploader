@@ -38,11 +38,26 @@ export async function postSignup(req, res){
             }
         })
         console.log("Worked!");
-        res.redirect("/");
+        res.redirect("/login");
     }
     catch(err){
         console.log(err);
         res.redirect("/");
     }
+}
+
+export async function getUserByUsername(name){
+    const user = await prisma.user.findFirst({
+        where:{username: name }
+    })
+    //console.log(user.username);
+    return user;
+}
+
+export async function getUserById(id){
+    const user = await prisma.user.findUnique({
+        where:{id: id}
+    })
+    return user;
 }
 //I don't know why, but using 'module.exports' doesn't work.
