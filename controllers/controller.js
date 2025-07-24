@@ -1,34 +1,24 @@
-const bcrypt = require("bcryptjs");
+/* const bcrypt = require("bcryptjs");
 const passport = require("passport");
-const LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy; */
 
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "../generated/prisma/client.js";
 const prisma = new PrismaClient();
 
-async function main(){
-    const user = await prisma.User.create({
+export async function createUser(req, res){
+    const newUser = await prisma.user.create({
     data: {
         firstname: 'Testy',
         lastname: 'Testerson',
         username: 'TestMan',
         password: 'boogers'
     }
-}); 
-console.log(user)
+})
+};
+
+export async function seeUsers(req, res){
+    const users = await prisma.user.findMany();
+    console.log(users);
 }
 
-main()
-.catch(e => {
-    console.error(e.message)
-})
-.finally(async () => {
-    await prisma.$disconect()
-})
-/* await prisma.User.create({
-    data: {
-        firstname: 'Testy',
-        lastname: 'Testerson',
-        username: 'TestMan',
-        password: 'boogers'
-    }
-}) */
+//I don't know why, but using 'module.exports' doesn't work.

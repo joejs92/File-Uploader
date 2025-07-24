@@ -1,7 +1,7 @@
 const {Router} = require("express");
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
-/* const controller = require("../controllers/controller") */
+const controller = require("../controllers/controller");
 //const {home} = require("../views/index");
 
 const login = Router();
@@ -14,5 +14,6 @@ const links = [
 const title = "LOGIN PAGE";
 
 login.get("/", (req, res)=> res.render("login", { links: links, title: title}));
+login.get("/seeUsers",controller.seeUsers);
 
 module.exports = login;
