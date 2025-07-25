@@ -11,7 +11,7 @@ const links = [
 
 const title = "SIGN-UP PAGE";
 
-signup.get("/", (req, res)=> res.render("signup", {title: title, links: links}));
+signup.get("/", (req, res)=> res.render("signup", {title: title, links: links, user: req.user}));
 signup.post("/", controller.postSignup);
 
 module.exports = signup;

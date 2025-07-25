@@ -21,16 +21,12 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      /* if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" }); 
-      currently set to check 'admin' membership. */
        const match = await bcrypt.compare(password, user.password);
       if (!match) {
         // passwords do not match!
         return done(null, false, { message: "Incorrect password" })
         //*for not-test data.*
       }
-      console.log("It worked!");
       return done(null, user);
     } catch(err) {
       return done(err);
@@ -45,23 +41,21 @@ passport.serializeUser((user, done) => {
 passport.deserializeUser(async (id, done) => {
   try {
     const user = await controller.getUserById(id);
-
     done(null, user);
   } catch(err) {
     done(err);
   }
 });
 
-login.get("/", (req, res)=> res.render("login", { links: links, title: title}));
+login.post("/", passport.authenticate("local",{
+    successRedirect: "/",
+    failureRedirect: "/signup"
+}));
+
+login.get("/", (req, res)=> res.render("login", { links: links, title: title, user: req.user}));
 login.get("/seeUsers",controller.seeUsers);
 login.get("/createUser",controller.createUser);
 login.get("/deleteAll",controller.deleteAll);
-
-login.post("/", passport.authenticate("local",{
-    successRedirect: "/",
-    failureRedirect: "/"
-}));
-
-//login.post("/", controller.getUserByUsername);
+login.get("/checkLocals", controller.checkLocals);
 
 module.exports = login;

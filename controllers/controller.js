@@ -1,6 +1,3 @@
-/*const passport = require("passport");
-const LocalStrategy = require('passport-local').Strategy; */
-//const {bcrypt} = require("bcryptjs");
 import encryptpassword from "./encryption.js";
 
 import { PrismaClient } from "../generated/prisma/client.js";
@@ -59,5 +56,10 @@ export async function getUserById(id){
         where:{id: id}
     })
     return user;
+}
+
+export async function checkLocals(req, res){
+    console.log(res.locals.user);
+    //currently 'undefined'
 }
 //I don't know why, but using 'module.exports' doesn't work.

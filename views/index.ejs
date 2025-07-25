@@ -8,5 +8,10 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
+    <% if (locals.user) {%> 
+        <p>It's working!</p>
+    <%} else {%> 
+        <p> Status quo, yo</p>    
+    <%} %>
 </body>
 </html>

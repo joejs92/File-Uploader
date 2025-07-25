@@ -11,6 +11,6 @@ const links = [
 
 const title = "LANDING PAGE";
 
-index.get("/", (req, res)=> res.render("index", { links: links, title: title }));
+index.get("/", (req, res)=> res.render("index", { links: links, title: title, user: req.user }));
 
 module.exports = index;
