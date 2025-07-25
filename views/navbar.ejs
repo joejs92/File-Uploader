@@ -14,6 +14,11 @@
   <% if (locals.user){%> 
     <ul>
       <li><p>Hello, <%= user.username%></p></li>
+      <li>
+        <a href = "/logout">
+          <span>Log out</span>
+        </a>
+      </li>
     </ul>
   <%} else {%> 
       <ul>

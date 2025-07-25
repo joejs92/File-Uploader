@@ -4,6 +4,7 @@ const session = require("express-session");
 const passport = require("passport");
 const index = require("./routes/index");
 const login = require("./routes/login");
+const logout = require("./routes/logout");
 const signup = require("./routes/signup");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use("/", index);
 app.use("/login", login);
+app.use("/logout", logout);
 app.use("/signup", signup);
 
 module.export = bcrypt;
