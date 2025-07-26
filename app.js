@@ -6,6 +6,7 @@ const index = require("./routes/index");
 const login = require("./routes/login");
 const logout = require("./routes/logout");
 const signup = require("./routes/signup");
+const uploadFiles = require("./routes/uploadFiles");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -22,6 +23,7 @@ app.use("/", index);
 app.use("/login", login);
 app.use("/logout", logout);
 app.use("/signup", signup);
+app.use("/uploadFiles", uploadFiles);
 
 module.export = bcrypt;
 

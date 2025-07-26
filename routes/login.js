@@ -48,7 +48,7 @@ passport.deserializeUser(async (id, done) => {
 });
 
 login.post("/", passport.authenticate("local",{
-    successRedirect: "/",
+    successRedirect: "/uploadFiles",
     failureRedirect: "/signup"
 }));
 
