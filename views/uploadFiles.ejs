@@ -8,9 +8,9 @@
 </head>
 <body>
     <%- include('navbar', {title: title}) %>
-    <form action ="" method="get" enctype="multipart/form-data">
-        <label for="selectFile">Select a file:</label>
-        <input type="file" id="selectFile" name="selectFile">
+    <form action ="/uploadFiles" method="post" enctype="multipart/form-data">
+        <label for="file">Select a file:</label>
+        <input type="file" id="file" name="file">
         <button type="submit">Submit</button>
     </form>
 </body>
