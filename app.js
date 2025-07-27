@@ -8,6 +8,7 @@ const logout = require("./routes/logout");
 const signup = require("./routes/signup");
 const uploadFiles = require("./routes/uploadFiles");
 const profile = require("./routes/profile");
+const createNewFolder = require("./routes/createNewFolder");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -26,6 +27,7 @@ app.use("/logout", logout);
 app.use("/signup", signup);
 app.use("/uploadFiles", uploadFiles);
 app.use("/profile", profile);
+app.use("/createNewFolder", createNewFolder);
 
 module.export = bcrypt;
 

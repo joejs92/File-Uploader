@@ -14,11 +14,13 @@
   <% if (locals.user){%> 
     <ul>
       <li><p>Hello, <%= user.username%></p></li>
-      <li>
-        <a href = "/logout">
-          <span>Log out</span>
-        </a>
-      </li>
+      <% for (let i = 0; i < links.length; i++) { %>
+        <li>
+          <a href="<%= links[i].href %>">
+            <span> <%= links[i].text %> </span>
+          </a>
+        </li>
+      <% } %>
     </ul>
   <%} else {%> 
       <ul>

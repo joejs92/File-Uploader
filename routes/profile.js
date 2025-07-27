@@ -3,8 +3,13 @@ const {Router} = require("express");
 
 const profile = Router();
 
+const links = [
+  { href: "createNewFolder", text: "Create New Folder" },
+  { href: "logout", text: "Log Out" }
+];
+
 const title = "Profile";
 
-profile.get("/", (req, res)=> res.render("profile", { title: title, user: req.user }));
+profile.get("/", (req, res)=> res.render("profile", { links: links, title: title, user: req.user }));
 
 module.exports = profile;
