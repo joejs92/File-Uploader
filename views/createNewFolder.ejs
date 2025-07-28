@@ -8,5 +8,12 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
+    <form action="/createNewFolder" method="POST">
+      
+        <label for="foldername">New Folder Name</label>
+        <input id="foldername" name="foldername" type="text" />
+
+        <button type="submit">Log In</button>
+    </form>
 </body>
 </html>

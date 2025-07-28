@@ -3,17 +3,6 @@ import encryptpassword from "./encryption.js";
 import { PrismaClient } from "../generated/prisma/client.js";
 const prisma = new PrismaClient();
 
-export async function createUser(req, res){
-    const newUser = await prisma.user.create({
-    data: {
-        firstname: 'Testy',
-        lastname: 'Testerson',
-        username: 'TestMan',
-        password: 'boogers'
-    }
-})
-};
-
 export async function seeUsers(req, res){
     const users = await prisma.user.findMany();
     console.log(users);
@@ -47,7 +36,6 @@ export async function getUserByUsername(name){
     const user = await prisma.user.findFirst({
         where:{username: name }
     })
-    //console.log(user.username);
     return user;
 }
 
@@ -58,8 +46,20 @@ export async function getUserById(id){
     return user;
 }
 
-export async function checkLocals(req, res){
-    console.log(res.locals.user);
-    //currently 'undefined'
+export async function postNewFolder(req, res){
+    const newFolder = await prisma.folders.create({
+        data: {
+            foldername: req.body.foldername,
+            userId: req.user.id
+        }
+    })
+    res.redirect("/profile");
+}
+
+export async function seeFolders(req, res){
+    const folders = await prisma.folders.findMany();
+    console.log(folders);
 }
 //I don't know why, but using 'module.exports' doesn't work.
+//When deleting these functions, make sure you also delete the references to
+//those functions in the routes!!

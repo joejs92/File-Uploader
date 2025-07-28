@@ -54,8 +54,6 @@ login.post("/", passport.authenticate("local",{
 
 login.get("/", (req, res)=> res.render("login", { links: links, title: title, user: req.user}));
 login.get("/seeUsers",controller.seeUsers);
-login.get("/createUser",controller.createUser);
 login.get("/deleteAll",controller.deleteAll);
-login.get("/checkLocals", controller.checkLocals);
 
 module.exports = login;

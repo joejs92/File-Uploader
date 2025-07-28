@@ -1,5 +1,5 @@
 const {Router} = require("express");
-//const controller = require("../controllers/upload")
+const controller = require("../controllers/controller")
 
 const createNewFolder = Router();
 
@@ -11,5 +11,8 @@ const links = [
 const title = "New Folder";
 
 createNewFolder.get("/", (req, res)=> res.render("createNewFolder", { links: links, title: title, user: req.user }));
+createNewFolder.get("/seeFolders", controller.seeFolders);
+
+createNewFolder.post("/", controller.postNewFolder);
 
 module.exports = createNewFolder;
