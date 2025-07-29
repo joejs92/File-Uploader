@@ -71,6 +71,15 @@ export async function getFolders(req, res){
     })
     return folders;
 }
+
+export async function deleteFolder(req, res){
+    const id = parseInt(req.params.folderId);
+    const folders = await prisma.folders.delete({
+        where: {folderId: id}
+    })
+    res.redirect("/profile");
+}
+
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to
 //those functions in the routes!!

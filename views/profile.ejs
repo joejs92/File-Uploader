@@ -10,7 +10,12 @@
     <%- include('navbar', {links: links, title: title}) %>
     <% for (let i = 0; i < folders.length; i++) { %>
         <li>
-          <p><%=folders[i].foldername%></p>
+          <div class = "folder">
+            <p><%=folders[i].foldername%></p>
+            <form action="profile/<%=folders[i].folderId%>" method = "GET">
+              <button>Delete</button>
+            </form>
+          </div>
         </li>
       <% } %>
 </body>

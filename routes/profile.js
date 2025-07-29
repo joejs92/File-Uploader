@@ -17,4 +17,8 @@ async function folderMiddleware(req, res, next){
 
 profile.get("/", folderMiddleware, (req, res)=> res.render("profile", { links: links, title: title, user: req.user, folders: req.folders}));
 
+profile.get("/:folderId", controller.deleteFolder);
+
+//look more inot POST and GET. An error keeps returning.
+
 module.exports = profile;
