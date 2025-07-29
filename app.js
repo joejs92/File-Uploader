@@ -9,6 +9,7 @@ const signup = require("./routes/signup");
 const uploadFiles = require("./routes/uploadFiles");
 const profile = require("./routes/profile");
 const createNewFolder = require("./routes/createNewFolder");
+const editFolderName = require("./routes/editFolderName")
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -28,6 +29,7 @@ app.use("/signup", signup);
 app.use("/uploadFiles", uploadFiles);
 app.use("/profile", profile);
 app.use("/createNewFolder", createNewFolder);
+app.use("/editFolderName", editFolderName);
 
 module.export = bcrypt;
 
