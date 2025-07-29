@@ -3,13 +3,6 @@ import encryptpassword from "./encryption.js";
 import { PrismaClient } from "../generated/prisma/client.js";
 const prisma = new PrismaClient();
 
-const links = [
-  { href: "createNewFolder", text: "Create New Folder" },
-  { href: "logout", text: "Log Out" }
-];
-
-const title = "Profile";
-
 export async function seeUsers(req, res){
     const users = await prisma.user.findMany();
     console.log(users);
@@ -76,8 +69,7 @@ export async function getFolders(req, res){
             }
         }
     })
-    console.log(folders);
-    res.render("profile", { links: links, title: title, user: req.user, folders: folders });
+    return folders;
 }
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to

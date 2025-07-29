@@ -10,6 +10,11 @@ const links = [
 
 const title = "Profile";
 
-profile.get("/", controller.getFolders);
+async function folderMiddleware(req, res, next){
+  req.folders = await controller.getFolders(req, res);
+  next();
+}
+
+profile.get("/", folderMiddleware, (req, res)=> res.render("profile", { links: links, title: title, user: req.user, folders: req.folders}));
 
 module.exports = profile;
