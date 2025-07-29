@@ -1,5 +1,5 @@
 const {Router} = require("express");
-//const controller = require("../controllers/upload")
+const controller = require("../controllers/controller")
 
 const profile = Router();
 
@@ -10,6 +10,6 @@ const links = [
 
 const title = "Profile";
 
-profile.get("/", (req, res)=> res.render("profile", { links: links, title: title, user: req.user }));
+profile.get("/", controller.getFolders);
 
 module.exports = profile;

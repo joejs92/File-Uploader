@@ -12,6 +12,7 @@ const title = "New Folder";
 
 createNewFolder.get("/", (req, res)=> res.render("createNewFolder", { links: links, title: title, user: req.user }));
 createNewFolder.get("/seeFolders", controller.seeFolders);
+createNewFolder.get("/getFolders", controller.getFolders);
 
 createNewFolder.post("/", controller.postNewFolder);
 

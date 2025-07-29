@@ -8,5 +8,10 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
+    <% for (let i = 0; i < folders.length; i++) { %>
+        <li>
+          <p><%=folders[i].foldername%></p>
+        </li>
+      <% } %>
 </body>
 </html>
