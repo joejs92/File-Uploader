@@ -11,7 +11,12 @@ const links = [
 
 const title = "Edit Folder Name";
 
-editFolderName.get("/", (req, res)=> res.render("editFolderName", {title: title, links: links, user: req.user}));
+async function folderMiddleware(req, res, next){
+  req.folders = await controller.getFolders(req, res);
+  next();
+}
+
+editFolderName.get("/", folderMiddleware,(req, res)=> res.render("editFolderName", {title: title, links: links, user: req.user, folders: req.folders}));
 //editFolderName.post("/", controller.postSignup);
 
 module.exports = editFolderName;
