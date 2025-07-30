@@ -15,7 +15,7 @@
             <form action="profile/<%=folders[i].folderId%>" method = "GET">
               <button>Delete</button>
             </form>
-            <form action="/editFolderName" method = "GET">
+            <form action="/editFolderName/<%=folders[i].folderId%>" method = "GET">
               <button>Edit</button>
             </form>
           </div>

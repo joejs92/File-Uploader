@@ -8,10 +8,10 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
-    <form action="/editFolderName" method="POST">
+    <form action="/editFolderName/<%=folder.folderId%>" method="POST">
         
         <label for="newName">New Folder Name</label>
-        <input id="newName" name="newName" type="text" value = "<%=folders[0].foldername%>"/>
+        <input id="newName" name="newName" type="text" value = "<%=folder.foldername%>"/>
         
         <button type="submit">Submit</button>
     </form>

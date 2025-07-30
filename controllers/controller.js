@@ -56,6 +56,15 @@ export async function postNewFolder(req, res){
     res.redirect("/profile");
 }
 
+export async function postNewFolderName(req, res){
+    const id = parseInt(req.params.folderId);
+    const updateFolderName = await prisma.folders.update({
+        where: {folderId: id},
+        data: {foldername: req.body.newName}
+    })
+    res.redirect("/profile");
+}
+
 export async function seeFolders(req, res){
     const folders = await prisma.folders.findMany();
     console.log(folders);
@@ -70,6 +79,14 @@ export async function getFolders(req, res){
         }
     })
     return folders;
+}
+
+export async function getSpecificFolder(req, res){
+    const id = parseInt(req.params.folderId);
+    const folder = await prisma.folders.findUnique({
+        where:{folderId: id}
+    })
+    return folder;
 }
 
 export async function deleteFolder(req, res){
