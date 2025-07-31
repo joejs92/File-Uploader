@@ -10,7 +10,7 @@ export async function seeUsers(req, res){
 
 export async function deleteAll(req,res){
     const deleteAll = await prisma.user.deleteMany({});
-};
+}; 
 
 export async function postSignup(req, res){
     try {

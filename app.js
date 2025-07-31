@@ -11,6 +11,7 @@ const profile = require("./routes/profile");
 const createNewFolder = require("./routes/createNewFolder");
 const editFolderName = require("./routes/editFolderName");
 const fileViewer = require("./routes/fileViewer");
+const fileInfo = require("./routes/fileInfo");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -32,6 +33,7 @@ app.use("/profile", profile);
 app.use("/createNewFolder", createNewFolder);
 app.use("/editFolderName", editFolderName);
 app.use("/fileViewer", fileViewer);
+app.use("/fileInfo", fileInfo);
 
 module.export = bcrypt;
 
