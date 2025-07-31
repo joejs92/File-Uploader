@@ -18,6 +18,9 @@
             <form action="/editFolderName/<%=folders[i].folderId%>" method = "GET">
               <button>Edit</button>
             </form>
+            <form action="/fileViewer/<%=folders[i].folderId%>" method = "GET">
+              <button>View Contents</button>
+            </form>
           </div>
         </li>
       <% } %>
