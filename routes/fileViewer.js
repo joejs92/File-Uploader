@@ -6,12 +6,13 @@ const fileViewer = Router();
 const links = [
   { href: "/profile", text: "Profile" },
   { href: "/uploadFiles", text: "Upload Files" },
-  { href: "logout", text: "Log Out" }
+  { href: "/logout", text: "Log Out" }
 ];
 //for some reason, the link to profile doesn't work without the slash in front
 
 async function folderMiddleware(req, res, next){
   req.folder = await controller.getSpecificFolder(req, res);
+  links[1].href = `/uploadFiles/${req.params.folderId}`
   next();
 }
 
