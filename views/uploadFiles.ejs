@@ -8,11 +8,10 @@
 </head>
 <body>
     <%- include('navbar', {title: title}) %>
-    <form action ="/uploadFiles" method="post" enctype="multipart/form-data">
+    <form action ="/uploadFiles/<%=folder.folderId%>" method="post" enctype="multipart/form-data">
         <label for="file">Select a file:</label>
         <input type="file" id="file" name="file">
         <button type="submit">Submit</button>
     </form>
-    <%= folder.folderId %>
 </body>
 </html>

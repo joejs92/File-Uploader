@@ -18,10 +18,16 @@ async function folderMiddleware(req, res, next){
   next();
 }
 
+async function addFileMiddleware(req, res){
+  console.log(req.file.originalname);
+  console.log(req.params.folderId);
+  console.log(req.user.id);
+}
 
 uploadFiles.get("/:folderId",folderMiddleware ,(req, res)=> res.render("uploadFiles", { title: title, links: links, user: req.user, folder: req.folder }));
 
-uploadFiles.post("/", controller.single('file'),(req, res)=> res.render("uploadFiles", { title: title, links: links, user: req.user, folder: req.folder }));
+//uploadFiles.post("/", controller.single('file'),(req, res)=> res.render("uploadFiles", { title: title, links: links, user: req.user, folder: req.folder }));
+uploadFiles.post("/:folderId", controller.single('file'),addFileMiddleware,(req, res)=> res.render("profile", { title: title, links: links, user: req.user}));
 
 
 module.exports = uploadFiles; 
