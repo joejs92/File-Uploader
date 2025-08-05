@@ -98,16 +98,13 @@ export async function deleteFolder(req, res){
 }
 
 export async function postFile(req, res){
-    /* console.log(req.file.originalname);
-    console.log(req.file.path);
-    console.log(req.params.folderId);
-    console.log(req.user.id); */
     const id = parseInt(req.params.folderId);
     const newFile = await prisma.files.create({
         data: {
             filename: req.file.originalname,
             folderId: id,
-            userId: req.user.id
+            userId: req.user.id,
+            path: req.file.path
         }
     })
 }
