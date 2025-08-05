@@ -97,6 +97,44 @@ export async function deleteFolder(req, res){
     res.redirect("/profile");
 }
 
+export async function postFile(req, res){
+    /* console.log(req.file.originalname);
+    console.log(req.file.path);
+    console.log(req.params.folderId);
+    console.log(req.user.id); */
+    const id = parseInt(req.params.folderId);
+    const newFile = await prisma.files.create({
+        data: {
+            filename: req.file.originalname,
+            folderId: id,
+            userId: req.user.id
+        }
+    })
+}
+
+export async function seeAllFiles(req, res){
+    const id = parseInt(req.params.folderId);
+    const files = await prisma.files.findMany({
+        where: {
+            folderId: {
+                equals: id
+            }
+        }
+    })
+    console.log(files);
+}
+
+export async function deleteAllFiles(req, res){
+    const id = parseInt(req.params.folderId);
+    const deleteAll = await prisma.files.deleteMany({
+        where:{
+            folderId: {
+                equals: id 
+            }
+        }
+    });
+    console.log("Deleted");
+}
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to
 //those functions in the routes!!
