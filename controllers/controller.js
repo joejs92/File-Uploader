@@ -91,6 +91,13 @@ export async function getSpecificFolder(req, res){
 
 export async function deleteFolder(req, res){
     const id = parseInt(req.params.folderId);
+    const deleteAll = await prisma.files.deleteMany({
+        where:{
+            folderId: {
+                equals: id 
+            }
+        }
+    });
     const folders = await prisma.folders.delete({
         where: {folderId: id}
     })
