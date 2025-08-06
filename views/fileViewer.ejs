@@ -14,7 +14,7 @@
         <li>
           <div class = "file">
             <p><%= files[i].filename %></p>
-            <form action="" method = "GET">
+            <form action="/fileInfo/<%=folder.folderId%>/<%=files[i].fileId%>" method = "GET">
               <button>File Info</button>
             </form>
             <form action="" method = "GET">

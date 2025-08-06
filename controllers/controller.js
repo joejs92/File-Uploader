@@ -1,4 +1,6 @@
 import encryptpassword from "./encryption.js";
+/* const fs = require("fs");
+const path = require("path"); */
 
 import { PrismaClient } from "../generated/prisma/client.js";
 const prisma = new PrismaClient();
@@ -152,6 +154,14 @@ export async function getFiles(req, res){
         }
     })
     return files;
+}
+
+export async function getSpecificFile(req, res){
+    const id = parseInt(req.params.fileId);
+    const file = await prisma.files.findUnique({
+        where:{fileId: id}
+    })
+    return file;
 }
 
 //I don't know why, but using 'module.exports' doesn't work.

@@ -8,8 +8,10 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
-    <form action="">
-        <button type="submit">Submit</button>
-    </form>
+    <ul>
+        <li>File Name: <%=file.filename%></li>
+        <li>File Size: <%=file.size%></li>
+        <li>Date File Uploaded: <%=file.added%></li>
+    </ul>
 </body>
 </html>

@@ -13,10 +13,11 @@ const title = "File Info";
 
 async function folderMiddleware(req, res, next){
   req.folder = await controller.getSpecificFolder(req, res);
-  console.log(req.folder);
+  req.file = await controller.getSpecificFile(req, res, next);
+  links[1].href = `/fileViewer/${req.params.folderId}`
   next();
 }
 
-fileInfo.get("/:folderId", (req, res)=> res.render("fileInfo", { links: links, title: title, user: req.user}));
+fileInfo.get("/:folderId/:fileId", folderMiddleware, (req, res)=> res.render("fileInfo", { links: links, title: title, user: req.user, folder: req.folder, file: req.file}));
 
 module.exports = fileInfo;
