@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "Files" ADD COLUMN     "added" TEXT NOT NULL DEFAULT 'N/A',
+ADD COLUMN     "size" TEXT NOT NULL DEFAULT 'N/A',
+ALTER COLUMN "path" SET DEFAULT 'N/A';

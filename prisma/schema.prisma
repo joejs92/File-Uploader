@@ -39,5 +39,9 @@ model Files {
   folderId Int
   user User @relation(fields: [userId], references: [id])
   userId Int
-  path String 
+  path String @default("N/A")
+  size Int @default(0)
+  added DateTime
 }
+//Had to add the default values or else it wouldn't work. I didn't see any
+//values in the DB when I checked, so I don't know why.

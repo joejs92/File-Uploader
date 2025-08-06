@@ -104,7 +104,9 @@ export async function postFile(req, res){
             filename: req.file.originalname,
             folderId: id,
             userId: req.user.id,
-            path: req.file.path
+            path: req.file.path,
+            size: req.file.size,
+            added: new Date()
         }
     })
 }
