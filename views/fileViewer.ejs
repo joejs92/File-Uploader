@@ -8,10 +8,22 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
+    <!-- Could take the below part and make a template out of it -->
     <ul>
     <% for (let i = 0; i < files.length; i++) { %>
         <li>
-          <p><%= files[i].filename %></p>
+          <div class = "file">
+            <p><%= files[i].filename %></p>
+            <form action="" method = "GET">
+              <button>File Info</button>
+            </form>
+            <form action="" method = "GET">
+              <button>Download</button>
+            </form>
+            <form action="" method = "GET">
+              <button>Delete</button>
+            </form>
+          </div>
         </li>
       <% } %>
     </ul>

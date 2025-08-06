@@ -8,6 +8,8 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
+    <!-- Could take the below part and make a template out of it -->
+    <ul>
     <% for (let i = 0; i < folders.length; i++) { %>
         <li>
           <div class = "folder">
@@ -24,5 +26,6 @@
           </div>
         </li>
       <% } %>
+    </ul>
 </body>
 </html>

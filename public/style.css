@@ -54,4 +54,10 @@ textarea {
     margin: 8px;
     border: 2px solid black;
     border-radius: 4px;
-}
+} 
+/* I forget how to combine the one above and the one below. */
+.file{
+    margin: 8px;
+    border: 2px solid black;
+    border-radius: 4px;
+} 
