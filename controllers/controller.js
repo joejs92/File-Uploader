@@ -132,6 +132,19 @@ export async function deleteAllFiles(req, res){
     });
     console.log("Deleted");
 }
+
+export async function getFiles(req, res){
+    const id = parseInt(req.params.folderId);
+    const files = await prisma.files.findMany({
+        where: {
+            folderId: {
+                equals: id
+            }
+        }
+    })
+    return files;
+}
+
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to
 //those functions in the routes!!

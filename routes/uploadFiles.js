@@ -12,6 +12,11 @@ const links = [
   { href: "logout", text: "Log Out" }
 ];
 
+const links2 = [
+  { href: "/profile", text: "Profile" },
+  { href: "/uploadFiles", text: "Upload Files" },
+  { href: "logout", text: "Log Out" }
+];
 
 async function folderMiddleware(req, res, next){
   req.folder = await controller2.getSpecificFolder(req, res);
@@ -21,8 +26,8 @@ async function folderMiddleware(req, res, next){
 
 async function folderMiddleware2(req, res, next){
   req.folder = await controller2.getSpecificFolder(req, res);
-  links[1].href = `/uploadFiles/${req.params.folderId}`
-  links[1].text = "Upload Files"
+  req.files = await controller2.getFiles(req, res);
+  links2[1].href = `/uploadFiles/${req.params.folderId}`
   next();
 }
 
@@ -36,7 +41,14 @@ uploadFiles.get("/:folderId/seeAllFiles", controller2.seeAllFiles);
 uploadFiles.get("/:folderId/deleteAllFiles", controller2.deleteAllFiles);
 
 //uploadFiles.post("/", controller.single('file'),(req, res)=> res.render("uploadFiles", { title: title, links: links, user: req.user, folder: req.folder }));
-uploadFiles.post("/:folderId", controller.single('file'),addFileMiddleware,folderMiddleware2,(req, res)=> res.render("fileViewer", { links: links, title: req.folder.foldername, user: req.user, folder: req.folder}));
+uploadFiles.post("/:folderId", controller.single('file'),addFileMiddleware,folderMiddleware2,(req, res)=> res.render("fileViewer", { 
+  links: links2, 
+  title: req.folder.foldername, 
+  user: req.user, 
+  folder: req.folder,
+  files: req.files
+}
+));
 //get the redirect to work when the 'Submit' button is pushed.
 
 module.exports = uploadFiles; 

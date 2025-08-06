@@ -12,10 +12,17 @@ const links = [
 
 async function folderMiddleware(req, res, next){
   req.folder = await controller.getSpecificFolder(req, res);
+  req.files = await controller.getFiles(req, res);
   links[1].href = `/uploadFiles/${req.params.folderId}`
   next();
 }
 
-fileViewer.get("/:folderId", folderMiddleware, (req, res)=> res.render("fileViewer", { links: links, title: req.folder.foldername, user: req.user, folder: req.folder}));
+fileViewer.get("/:folderId", folderMiddleware, (req, res)=> res.render("fileViewer", { 
+  links: links, 
+  title: req.folder.foldername, 
+  user: req.user, 
+  folder: req.folder,
+  files: req.files
+}));
 
 module.exports = fileViewer;

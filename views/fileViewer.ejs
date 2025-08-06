@@ -8,6 +8,12 @@
 </head>
 <body>
     <%- include('navbar', {links: links, title: title}) %>
-    
+    <ul>
+    <% for (let i = 0; i < files.length; i++) { %>
+        <li>
+          <p><%= files[i].filename %></p>
+        </li>
+      <% } %>
+    </ul>
 </body>
 </html>
