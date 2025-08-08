@@ -164,6 +164,11 @@ export async function getSpecificFile(req, res){
     return file;
 }
 
+export async function deleteFile(req, res){
+    console.log(req.params.fileId);
+    console.log(req.params.folderId);
+}
+
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to
 //those functions in the routes!!
