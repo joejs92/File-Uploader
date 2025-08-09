@@ -17,7 +17,7 @@
             <form action="/fileInfo/<%=folder.folderId%>/<%=files[i].fileId%>" method = "GET">
               <button>File Info</button>
             </form>
-            <form action="" method = "GET">
+            <form action="/fileViewer/download/<%=folder.folderId%>/<%=files[i].fileId%>" method = "GET">
               <button>Download</button>
             </form>
             <form action="/fileViewer/<%=folder.folderId%>/<%=files[i].fileId%>" method = "GET">

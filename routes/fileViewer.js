@@ -19,7 +19,6 @@ async function folderMiddleware(req, res, next){
 
 async function deleteFileMiddleware(req, res, next){
   await controller.deleteFile(req, res);
-  //next();
 }
 
 fileViewer.get("/:folderId", folderMiddleware, (req, res)=> res.render("fileViewer", { 
@@ -29,7 +28,7 @@ fileViewer.get("/:folderId", folderMiddleware, (req, res)=> res.render("fileView
   folder: req.folder,
   files: req.files
 }));
-
 fileViewer.get("/:folderId/:fileId", deleteFileMiddleware);
+fileViewer.get("/download/:folderId/:fileId", controller.getDownloadFile);
 
 module.exports = fileViewer;

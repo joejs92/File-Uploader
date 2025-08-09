@@ -180,6 +180,23 @@ export async function deleteFile(req, res){
     res.redirect(`/fileViewer/${req.params.folderId}`);
 }
 
+export async function getDownloadFile(req, res){
+    /* Apparently, res has a 'download' feature. I searched:
+    'download file express js' to dig up the code below.*/
+    const id = parseInt(req.params.fileId);
+    const file = await prisma.files.findUnique({
+        where:{fileId: id}
+    })
+    const path = file.path;
+    res.download(path, (err) => {
+        if (err) {
+            // Handle any errors that occur during the download
+            console.error('Error downloading file:', err);
+            res.status(500).send('Error downloading file.');
+        }
+    });
+}
+
 //I don't know why, but using 'module.exports' doesn't work.
 //When deleting these functions, make sure you also delete the references to
 //those functions in the routes!!
