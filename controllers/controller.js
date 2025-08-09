@@ -1,6 +1,5 @@
 import encryptpassword from "./encryption.js";
-/* const fs = require("fs");
-const path = require("path"); */
+import fs from 'fs';
 
 import { PrismaClient } from "../generated/prisma/client.js";
 const prisma = new PrismaClient();
@@ -165,8 +164,20 @@ export async function getSpecificFile(req, res){
 }
 
 export async function deleteFile(req, res){
-    console.log(req.params.fileId);
-    console.log(req.params.folderId);
+    const id = parseInt(req.params.fileId);
+    const file = await prisma.files.findUnique({
+        where:{fileId: id}
+    })
+    const path = file.path;
+    fs.unlink(path, (err) => {
+        if (err) {
+          console.error("Failed to delete image:", err);
+        }
+    });
+    await prisma.files.delete({
+        where:{fileId: id}
+    })
+    res.redirect(`/fileViewer/${req.params.folderId}`);
 }
 
 //I don't know why, but using 'module.exports' doesn't work.
